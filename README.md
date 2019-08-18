@@ -1,28 +1,13 @@
-# api
+# Sample Sails application that implements Winston logger via captians-log
 
-a [Sails v1](https://sailsjs.com) application
+This sample [Sails](https://github.com/balderdashy/sails) application was created to test the changes made into 
+[captains-log](https://github.com/balderdashy/captains-log) in this [PR](https://github.com/balderdashy/captains-log/pull/25), 
+to make use of [Winston] logger.
 
+This works also as an example of how you can configure Winston to look nice in your loggers 
 
-### Links
+Particularly check the [config/log.js](https://github.com/luislobo/sails-test-2019/blob/master/config/log.js) file
+to see how the [Winston] integration was made.
 
-+ [Sails framework documentation](https://sailsjs.com/get-started)
-+ [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
-+ [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
-+ [Community support options](https://sailsjs.com/support)
-+ [Professional / enterprise options](https://sailsjs.com/enterprise)
-
-
-### Version info
-
-This app was originally generated on Fri Mar 08 2019 17:49:04 GMT-0600 (Central Standard Time) using Sails v1.1.0.
-
-<!-- Internally, Sails used [`sails-generate@1.16.6`](https://github.com/balderdashy/sails-generate/tree/v1.16.6/lib/core-generators/new). -->
-
-
-This project's boilerplate is based on an expanded seed app provided by the [Sails core team](https://sailsjs.com/about) to make it easier for you to build on top of ready-made features like authentication, enrollment, email verification, and billing.  For more information, [drop us a line](https://sailsjs.com/support).
-
-
-<!--
-Note:  Generators are usually run using the globally-installed `sails` CLI (command-line interface).  This CLI version is _environment-specific_ rather than app-specific, thus over time, as a project's dependencies are upgraded or the project is worked on by different developers on different computers using different versions of Node.js, the Sails dependency in its package.json file may differ from the globally-installed Sails CLI release it was originally generated with.  (Be sure to always check out the relevant [upgrading guides](https://sailsjs.com/upgrading) before upgrading the version of Sails used by your app.  If you're stuck, [get help here](https://sailsjs.com/support).)
--->
-
+---
+[Winston]: https://github.com/winstonjs/winston
