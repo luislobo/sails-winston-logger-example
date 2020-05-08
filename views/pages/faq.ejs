@@ -16,7 +16,7 @@
         <li><a target="_blank" href="http://fontawesome.io/icons/"><strong>Font Awesome 4</strong></a> - Icons</li>
         <li><a target="_blank" href="https://vuejs.org/"><strong>Vue.js</strong></a> - Front-end framework</li>
         <li><a target="_blank" href="https://npmjs.com/package/parasails"><strong>parasails.js</strong></a> - Thin layer of bundled conventions for using Vue.js with Sails.js, and dynamically-generated SDK for handling AJAX and/or WebSocket requests from the front-end to the actions in your Sails app. (More info on usage below.)</li>
-        <li><a target="_blank" href="https://www.mailgun.com/"><strong>Mailgun</strong></a>* - Emails</li>
+        <li><a target="_blank" href="https://www.sendgrid.com/"><strong>Sendgrid</strong></a>* - Emails</li>
         <li><a target="_blank" href="https://stripe.com/docs"><strong>Stripe</strong></a>* - Payments</li>
       </ul>
       <p><small>* requires an API key</small></p>
@@ -24,16 +24,16 @@
     <div class="q-and-a">
       <hr class="mt-4 mb-4"/>
       <h4>Why do I see placeholders like "NEW_APP_COMPANY_NAME" all over the place? What's the best way to customize these?</h4>
-      <p>Because projects are often generated before product and/or company names are finalized, we felt it made more sense to use easily find-and-replaceable placeholders than to prompt for an app or company name at the beginning. (It's a lot easier to find/replace "NEW_APP_COMPANY_NAME" without conflicts than it is to find/replace a more commonly-used word.)</p>
+      <p>Because projects are often generated before product and/or company names are finalized, we felt it made more sense to use easily find-and-replaceable placeholders than to prompt for an app or company name at the beginning. All placeholders are set in the custom.js.template file of your new Sails app.</p>
       <p>When you've got your product, company name, and branding finalized, here are the placeholders you'll want to switch out:</p>
       <ul>
-        <li><strong>NEW_APP_NAME</strong> - You can replace any instance of this with the name of your product.</li>
-        <li><strong>NEW_APP_COMPANY_NAME</strong> - This placeholder is used for the entity name in the default legal terms &amp; privacy policy, and can be replaced with the name of the company behind your app.</li>
-        <li><strong>NEW_APP_CREATION_CALENDAR_DATE</strong> - Replace this with the current date.</li>
-        <li><strong>NEW_APP_COMPANY_ABOUT_HREF</strong> - This is the link in the copyright section of the footer. You'll probably want to switch it out for a link to your company's about page or marketing site.</li>
+        <li><strong>NEW_APP_NAME</strong> (<code>sails.config.custom.platformName</code>) - You can replace this with the name of your product.</li>
+        <li><strong>NEW_APP_COMPANY_NAME</strong> (<code>sails.config.custom.platformCompanyName</code>) - This placeholder is used for the entity name in the default legal terms &amp; privacy policy, and can be replaced with the name of the company behind your app.</li>
+        <li><strong>DATE_PRIVACY_POLICY_LAST_UPDATED</strong> (<code>sails.config.custom.privacyPolicyUpdatedAt</code>) - Replace this with the date your Privacy Policy was updated (so if you're switching out the company name: today).</li>
+        <li><strong>DATE_TERMS_OF_SERVICE_LAST_UPDATED'</strong> (<code>sails.config.custom.termsOfServiceUpdatedAt</code>) - Replace this with the date your Terms of Service were updated (so if you're switching out the company name: today).</li>
+        <li><strong>NEW_APP_COMPANY_ABOUT_HREF</strong> (<code>sails.config.custom.platformCompanyAboutHref</code>) - This is the link in the copyright section of the footer. You'll probably want to switch it out for a link to your company's about page or marketing site.</li>
         <li>Placeholder logo - To use your custom branding, you can simply replace the image file at <code>assets/images/logo.png</code> with a custom image of the same name, or change the image <code>src</code> in the header in <code>views/layouts/layout.ejs</code>.</li>
       </ul>
-      <blockquote><small>Just a heads up, the previous couple paragraphs will make a lot less sense once you've done a find/replace on each of those placeholder words.</small></blockquote>
     </div>
     <div class="q-and-a">
       <hr class="mt-4 mb-4"/>
@@ -71,11 +71,11 @@
     </div>
     <div class="q-and-a">
       <hr class="mt-4 mb-4"/>
-      <h4>How do I finish setting up Mailgun?</h4>
-      <p>To use Mailgun, you'll need to <a target="_blank" href="https://www.mailgun.com/">sign up for an account</a>. (While this <em>is</em> a paid service at higher usage levels, you should be able to use Mailgun as much as you need to in development without having to provide any credit card information.)</p>
-      <p>After you've created an account, you'll need to add your Mailgun domain and API secret to your custom config. (In development, this will be either in <code>config/custom.js</code>, or in a <code>local.js</code> file you add to your <code>config/</code> folder. For your staging or production deployment, you'll want to set these using system environment variables -- aka "config variables" in Heroku.)</p>
-      <p>If you already own a domain for your app, you can follow Mailgun's instructions for configuring a sending domain.</p>
-      <p>Otherwise, to send emails from this app <em>without</em> configuring a sending domain, you can use the sandbox domain &amp; test API secret that comes with your Mailgun account. Just be sure to configure the authorized recipents for your sandbox domain first, or there will be errors from the endpoints that attempt to send emails.</p>
+      <h4>How do I finish setting up Sendgrid?</h4>
+      <p>To use Sendgrid, you'll need to <a target="_blank" href="https://www.sendgrid.com/">sign up for an account</a>. (While this <em>is</em> a paid service at higher usage levels, you should be able to use Sendgrid in development without having to provide any credit card information.)</p>
+      <p>After you've created an account, you'll need to add your Sendgrid API secret to your custom config. (In development, this will be either in <code>config/custom.js</code>, or in a <code>local.js</code> file you add to your <code>config/</code> folder. For your staging or production deployment, you'll want to set these using system environment variables -- aka "config variables" in Heroku.)</p>
+      <p>If you already own a domain for your app, you can follow Sendgrid's instructions for configuring a sending domain.</p>
+      <p>Otherwise, to send emails from this app <em>without</em> configuring a sending domain, you can <a target="_blank" href="https://app.sendgrid.com/settings/sender_auth">verify a single sender</a>. Just be sure to set <code>sails.config.custom.fromEmailAddress</code> to use the verified email, or there will be errors from the endpoints that attempt to send emails.</p>
     </div>
     <div class="q-and-a">
       <hr class="mt-4 mb-4"/>
@@ -96,12 +96,12 @@
       <ul>
         <li>Delete the folder at <code>assets/dependencies/font-awesome-4/</code>. (You'll also likely want to search the project for "fa fa-" to check for any lingering icons in the HTML.)</li>
       </ul>
-      <p class="pt-4 text-muted"><strong><em>To swap out Mailgun:</em></strong></p>
-      <p>We chose Mailgun because of its very generous free tier (you can send up to 10,000 emails per month).  Plus it integrates easily, it's been around for a while (so it's stable and does a good job evading spam filters), and it's used internally at companies like GitHub and Heroku.</p>
-      <p>Out-of-the box, if Mailgun is not configured for this app, the contact form and password recovery flow will fail outright unless an email address ending in "@example.com" is used.  Luckily, if you wish to use <a target="_blank" href="https://stackshare.io/mailgun/alternatives">a different solution for sending automated emails</a>, the logic for sending emails is fairly contained. To switch to a service other than Mailgun, you'll need to make the following changes to your code:</p>
+      <p class="pt-4 text-muted"><strong><em>To swap out Sendgrid:</em></strong></p>
+      <p>We chose Sendgrid because of its very generous free tier (you can send up to 100 emails per day).  Plus, it integrates easily, it's been around for a while (so it's stable and does a good job evading spam filters), and it's used internally at companies like Slack and Medium.</p>
+      <p>Out-of-the box, if Sendgrid is not configured for this app, the contact form and password recovery flow will fail outright unless an email address ending in "@example.com" is used.  Luckily, if you wish to use <a target="_blank" href="https://stackshare.io/twilio-sendgrid">a different solution for sending automated emails</a>, the logic for sending emails is fairly contained. To switch to a service other than Sendgrid, you'll need to make the following changes to your code:</p>
       <ul>
         <li>Modify the code in <code>api/helpers/send-template-email.js</code> to use the email service of your choice.</li>
-        <li>In <code>api/hooks/custom/index.js</code>, remove the warnings related to Mailgun.</li>
+        <li>In <code>api/hooks/custom/index.js</code>, remove the warnings related to Sendgrid.</li>
       </ul>
       <p class="pt-4 text-muted"><strong><em>To remove or replace Stripe integration:</em></strong></p>
       <p>We chose Stripe because it is the easiest-to-integrate payment processor in the industry.  Its rates are about the same <a target="_blank" href="https://stackshare.io/stripe/alternatives">as its competitors'</a>, but even if that weren't the case, Stripe's focus on developer happiness would probably make up for it.  Stripe processes payments, payouts, and more for <a target="_blank" href="https://stripe.com/us/customers">hundreds of thousands of businesses</a> all around the world.</p>
